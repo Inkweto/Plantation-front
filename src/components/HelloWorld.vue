@@ -23,19 +23,39 @@
             target="_blank"
           >here</a>
         </p>
-      </v-col>
 
-      
-      
+        <v-btn
+          v-on:click='fetchDemoData'
+          target="_blank"
+          text
+        >
+        get some data from back-end
+        </v-btn>
+        <hr>
+        <p>
+            <i>{{result}}</i>
+        </p>
+        <hr>
+
+      </v-col>
     </v-row>
   </v-container>
 </template>
-
 <script>
   export default {
     name: 'HelloWorld',
-
+    methods: {
+      async fetchDemoData() {
+        this.result = await fetch("http://localhost:8080", {
+          headers: {
+            Accept: "application/json"
+          }
+        });
+        this.result = await this.result.json();
+      }
+    },
     data: () => ({
+      result: "",
       ecosystem: [
         {
           text: 'vuetify-loader',
@@ -86,6 +106,6 @@
           href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
         },
       ],
-    }),
+    })
   }
 </script>
