@@ -1,4 +1,36 @@
-# Plantation-front
+# Plantation - front
+
+University project which enables user all information about his plants.
+
+## Development
+Create `.env` file from `.env.example`
+```bash
+cp .env.example .env
+```
+
+## VSCode + Docker
+1. Start Docker and open project's dir in VSCode
+2. Install `ms-vscode-remote.remote-containers` extension
+3. `Ctrl+Shift+P` -> Remote-Containers: Reopen in Container
+4. Run app and database server
+```bash
+npm run serve
+```
+
+### Build docker image
+```
+docker build -t app .
+```
+
+### Run docker container (prod) - remember to uncomment in dockerfile
+```
+docker run -p 8000:80 -it --name app app
+```
+
+### Run docker container (dev)
+```
+docker run -dp 8000:8080 -w /app -v "$(pwd):/app" node:12.18.1-alpine sh -c "npm install && npm run serve"
+```
 
 ## Project setup
 ```
