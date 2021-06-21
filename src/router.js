@@ -4,6 +4,7 @@ import store from './store'
 import Login from './views/Login.vue'
 import Main from './views/HelloWorld.vue'
 import Plants from './views/Plants.vue'
+import Notices from './views/Notices.vue'
 
 Vue.use(Router)
 
@@ -19,6 +20,11 @@ const routes = [
         name: 'plants',
         component: Plants,
         meta: {requiresAuth: true},
+    },
+    {
+        path: '/notices',
+        name: 'notices',
+        component: Notices
     },
     {
         path: '/login',
@@ -40,7 +46,7 @@ router.beforeEach((to, from, next) => {
             next();
             return;
         }
-        next('/login');
+        //next('/login');
     } else {
         next();
     }
