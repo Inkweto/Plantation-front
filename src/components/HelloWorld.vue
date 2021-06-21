@@ -14,29 +14,26 @@
         <h1 class="display-2 font-weight-bold mb-3">
           Welcome to Plantation
         </h1>
+         
+            
+            <v-btn
+              class='mr-5'
+              x-large
+              color="green"
+              dark
+              href="http://localhost:8000/plants"
+            >
+              Plant collection
+            </v-btn>
 
-        <p class="subheading font-weight-regular">
-          Project is still in progress!
-          <br>Watch us 
-          <a
-            href="https://github.com/Inkweto/Plantation-front"
-            target="_blank"
-          >here</a>
-        </p>
-
-        <v-btn
-          v-on:click='fetchDemoData'
-          target="_blank"
-          text
-        >
-        get some data from back-end
-        </v-btn>
-        <hr>
-        <p>
-            <i>{{result}}</i>
-        </p>
-        <hr>
-
+            <v-btn
+              x-large
+              color="green"
+              dark
+              href="http://localhost:8000/notices"
+            >
+              Notice board
+            </v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -44,18 +41,7 @@
 <script>
   export default {
     name: 'HelloWorld',
-    methods: {
-      async fetchDemoData() {
-        this.result = await fetch("http://localhost:8080", {
-          headers: {
-            Accept: "application/json"
-          }
-        });
-        this.result = await this.result.json();
-      }
-    },
     data: () => ({
-      result: "",
     })
   }
 </script>

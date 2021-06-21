@@ -26,6 +26,13 @@
           <span class="mr-2">Plants</span>
         </v-btn>
 
+        <v-btn
+          href="http://localhost:8000/notices"
+          text
+        >
+          <span class="mr-2">Notices</span>
+        </v-btn>
+
         <v-spacer></v-spacer>
 
         <span v-if="isLoggedIn">
