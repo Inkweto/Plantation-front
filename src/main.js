@@ -4,6 +4,7 @@ import vuetify from './plugins/vuetify'
 import router from './router'
 import store from './store';
 import axios from 'axios';
+import VueCookies from 'vue-cookies';
 
 axios.defaults.withCredentials = true
 axios.defaults.baseURL = 'http://localhost:8080';
@@ -22,6 +23,8 @@ axios.interceptors.response.use(undefined, function (error) {
 
 Vue.config.productionTip = false;
 Vue.prototype.$api_url = "http://localhost:8080";
+
+Vue.use(VueCookies);
 
 new Vue({
   store,

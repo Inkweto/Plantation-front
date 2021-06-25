@@ -9,24 +9,21 @@ const getters = {
 };
 const actions = {
     async LogIn({commit}, User) {
-        //localhost:8080/login?login=Adam&password=admin
-
         var result = await fetch(Vue.prototype.$api_url + "/login/?" + 
                                     "login=" + User.get('username') +
                                     "&password=" + User.get('password'), {
+            method: 'POST',
             headers: {
                 Accept: "application/json"
             }
-            });  
+        });  
         
-        const resp = await result.json();    
-        const info = await resp;
-
+        const resp = await result.json();  
+        console.log(resp);
         if(result.status == 200) {
-            await commit('setUser', info)         
-        }
 
-        //await commit('setUser', User.get('username'))
+            await commit('setUser', resp)         
+        }
     },
 
     async LogOut({commit}){
@@ -35,8 +32,8 @@ const actions = {
     }
 };
 const mutations = {
-    setUser(state, username){
-        state.user = username
+    setUser(state, user){
+        state.user = user
     },
     LogOut(state){
         state.user = null

@@ -20,6 +20,7 @@
 </template>
  
 <script>
+import Vue from 'vue'
 
 export default {
   data() {
@@ -30,9 +31,28 @@ export default {
       }
   },
   methods: {
-      addPlant() {
-          console.log(this.name, this.height, this.diameter)
-      }
+        async addPlant() {
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json",
+                           "Access-Control-Allow-Credentials": "true",
+                           "Access-Control-Allow-Origin": "http://localhost:8080/plants/" },
+                credentials: "include",
+                body: JSON.stringify({ 
+                    "name": this.name,
+                    "ownerId": {
+                        "login": this.$store.getters.StateUser.login,
+                        "id": this.$store.getters.StateUser.id
+                    },
+                    "height": this.height,
+                    "diameter": this.diameter
+                })
+            };
+
+            this.result = await fetch(Vue.prototype.$api_url + "/plants", requestOptions);
+            this.reservationResponse = await this.result.json()
+
+        },
   }
 }
 </script>
