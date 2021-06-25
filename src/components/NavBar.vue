@@ -67,7 +67,7 @@
   },
   computed : {
       isLoggedIn : function(){ return this.$store.getters.isAuthenticated },
-      getUsername : function(){ return this.$store.getters.StateUser.name }
+      getUsername : function(){ return this.$store.getters.StateUser.login }
   },
   methods: {
     async logout (){

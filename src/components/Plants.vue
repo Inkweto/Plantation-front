@@ -67,6 +67,17 @@ export default {
       }
       });
       this.plants = await this.result.json();
+
+      const requestOptions = {
+          method: "GET",
+          headers: { "Content-Type": "application/json",
+                     "Access-Control-Allow-Credentials": "true",
+                     "Access-Control-Allow-Origin": "http://localhost:8080/plants/" },
+          credentials: "include"
+      };
+
+      this.result = await fetch(Vue.prototype.$api_url + "/plants", requestOptions);
+      this.plants1 = await this.result.json()
     }
   }
 }
